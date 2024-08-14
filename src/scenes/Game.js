@@ -41,6 +41,7 @@ export class Game extends Scene {
     this.physics.add.collider(this.paddle, this.ball, null, null, this);
 
     //colision de la pelota con el obstaculo
+    this.ball.body.onWorldBounds = true;
     this.physics.add.collider(
       this.obstacle,
       this.ball,
@@ -48,6 +49,14 @@ export class Game extends Scene {
       null,
       this
     );
+
+    //colision de la pelota con el limite inferior
+    this.physics.world.on("worldbounds", (body, up, down, left, right) => {
+      if (down) {
+        console.log("hit bottom");
+        this.scene.start("GameOver");
+      }
+    });
   }
 
   update() {
