@@ -1,21 +1,9 @@
 import { Scene } from "phaser";
 
-// URL to explain PHASER scene: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scene/
-// spaghtetti
-// codigo todo junto y desordenado
-// vanilla
-// JS puro sin agregados
-
 export class Game extends Scene {
   constructor() {
-    // key of the scene
-    // the key will be used to start the scene by other scenes
     super("Game");
   }
-
-  init() {}
-
-  preload() {}
 
   create() {
     // crear pala como rectangulo
@@ -28,7 +16,6 @@ export class Game extends Scene {
     this.obstacle = this.add.rectangle(400, 200, 100, 100, 0x66ff66);
 
     //agregarlos a las fisicas
-    console.log(this);
     this.physics.add.existing(this.paddle);
     this.physics.add.existing(this.ball);
     this.physics.add.existing(this.obstacle);
